@@ -1,0 +1,71 @@
+{{ blok._editable|raw }}
+<div class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+                    <picture>
+                        <source media="(min-width: 767px)"
+                                data-srcset="{{ blok.imageLeft|resize('640x360') }}, {{ blok.imageLeft|resize('1280x720') }} 2x">
+
+                        <source media="(min-width: 1080px)"
+                                data-srcset="{{ blok.imageLeft|resize('640x360') }}, {{ blok.imageLeft|resize('1280x720') }} 2x">
+
+                            {% if blok.linkLeft %}
+                                <a href="{{ blok.linkLeft }}" class="gtm-section-cta-imagetext" >
+                            {% endif %}
+                            
+                                <img data-srcset="{{ blok.imageLeft|resize('640x360') }}, {{ blok.imageLeft|resize('1280x720') }} 2x"
+                                    class="u-fit u-full-width lazyload"
+                                    alt="{% if blok.image.alt %}{{ blok.imageLeft.alt }}{% else %}{{ blok.titleLeft }}{% endif %}">
+                                
+                            {% if blok.linkLeft %}
+                                </a>
+                            {% endif %}
+
+                    </picture>
+
+                    <span class="t-h2 u-block u-marg-b-xxs u-marg-t-sm">{{ blok.titleLeft }}</span>
+                    <div class="t-text u-grey-text">{{ blok.textLeft|richtext }}</div>
+
+                    {% if blok.linkLeft and blok.link_titleLeft %}
+                        <a href="{{ blok.linkLeft }}" class="btn btn-info u-marg-t-sm gtm-section-cta-two-column-imagetext" >{{ blok.link_titleLeft }}</a>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+
+                    <picture>
+                        <source media="(min-width: 767px)"
+                                data-srcset="{{ blok.imageRight|resize('640x360') }}, {{ blok.imageRight|resize('1280x720') }} 2x">
+
+                        <source media="(min-width: 1080px)"
+                                data-srcset="{{ blok.imageRight|resize('640x360') }}, {{ blok.imageRight|resize('1280x720') }} 2x">
+
+                            {% if blok.linkRight %}
+                                <a href="{{ blok.linkRight }}" class="gtm-section-cta-imagetext" >
+                            {% endif %}
+                            
+                                <img data-srcset="{{ blok.imageRight|resize('640x360') }}, {{ blok.imageRight|resize('1280x720') }} 2x"
+                                    class="u-fit u-full-width lazyload"
+                                    alt="{% if blok.image.alt %}{{ blok.imageRight.alt }}{% else %}{{ blok.titleRight }}{% endif %}">
+                                
+                            {% if blok.linkRight %}
+                                </a>
+                            {% endif %}
+
+                    </picture>
+
+                    <span class="t-h2 u-block u-marg-b-xxs u-marg-t-sm">{{ blok.titleRight }}</span>
+                    <div class="t-text u-grey-text">{{ blok.textRight|richtext }}</div>
+
+                    {% if blok.linkRight and blok.link_titleRight %}
+                        <a href="{{ blok.linkRight }}" class="btn btn-info u-marg-t-sm gtm-section-cta-two-column-imagetext" >{{ blok.link_titleRight }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

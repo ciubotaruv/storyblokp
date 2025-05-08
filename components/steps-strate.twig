@@ -1,0 +1,51 @@
+{{ blok._editable|raw }}
+<div class="c-strate-steps u-marg-t-md u-marg-b-md u-marg-t-sm--xs u-marg-b-sm--xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-1">
+                {% if blok.title %}
+                    <h2 class="t-h1 u-marg-b-ml u-marg-b-sm--xs">{{ blok.title }}</h2>
+                {% endif  %}
+                <ul class="c-step-list">
+                    {% set counter = 1 %}
+                    {% for item in blok.items %}
+                        {{ item._editable|raw }}
+                        <li class="c-step-list__item">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <div class="c-step-list__bullet"><span>{{ counter }}</span></div>
+                                {% if item.image.filename %}
+                                    <img class="c-step-list__item-image u-marg-l-xs" src="{{ item.image|resize('50x50') }}">
+                                {% endif  %}
+                                <p class="c-step-list__title u-marg-l-xs">{{ item.title }}</p>
+                            </div>
+                        </li>
+                        {% set counter = counter + 1 %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 u-marg-t-md--xs">
+                <div class="c-news-card u-relative u-block js-slider-item">
+                    {% if blok.image.filename %}
+                        <div class="c-news-card__thumbnail u-box-5by3">
+                            <div class="u-wrapper-panel">
+                                <img data-src="{{ blok.image|resize('500x300') }}"
+                                     class="u-fit u-full-wh lazyload"
+                                     data-width="250"
+                                     data-height="150"
+                                     alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}">
+                            </div>
+                        </div>
+                    {% endif  %}
+                    {% if blok.subtitle or blok.subtext  %}
+                        <div class="c-news-card__info u-marg-t-xs">
+                            {% if blok.link_subtitle and blok.subtitle  %}
+                                <a href="{{ blok.link_subtitle}}" class="t-h2 u-marg-b-xxxs u-expand u-block">{{ blok.subtitle }}</a>
+                            {% endif  %}
+                            <div class="c-richtext">{{ blok.subtext|richtext }}</div>
+                        </div>
+                    {% endif  %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

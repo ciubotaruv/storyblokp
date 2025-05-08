@@ -1,0 +1,35 @@
+{{ blok._editable|raw }}
+<div class="c-offer-card col-12 col-sm-11 col-md-6 js-slider-item">
+    <div class="c-offer-card__inner u-bg-white u-full-width">
+        <div class="c-offer-card__info">
+            {% if blok.title %}
+                <p class="t-h2 u-marg-b-xxxs">{{ blok.title }}</p>
+            {% endif %}
+            {% if blok.text %}
+                <p class="t-text u-grey-text u-marg-b-xxxs">{{ blok.text }}</p>
+            {% endif %}
+            <div class="c-pricing u-marg-b-sm">
+                {% if blok.price %}
+                    <p class="c-pricing__price u-inline-block u-bottom">{{ blok.price }}</p>
+                 {% endif %}
+                 {% if blok.subtitle1 or blok.subtitle2 %}
+                    <p class="c-pricing__muted-text u-inline-block u-bottom u-marg-l-xxxs">
+                        {% if blok.subtitle1 %}
+                            <span class="u-block">{{ blok.subtitle1 }}</span>
+                        {% endif %}
+                        {% if blok.subtitle2 %}
+                            <span class="u-block">{{ blok.subtitle2 }}</span>
+                        {% endif %}
+                    </p>
+                {% endif %}
+            </div>
+            {% if blok.link and blok.link_title  %}
+                <a class="c-offer-card__btn btn btn-info gtm-section-cta-current-offers u-expand" href="{{ blok.link }}">{{ blok.link_title }}</a>
+            {% endif  %}
+        </div>
+        <div class="c-offer-card__thumbnail">
+            <img class="lazyload" data-src="{{ blok.image|resize('145x200')}}"
+                 alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{{ blok._editable|raw }}
+<div class="c-web-card u-relative">
+    <div class="c-web-card__inner">
+        <h2 class="c-web-card__title">{{ blok.title }}</h2>
+        <p class="c-web-card__subtitle">{{ blok.subtitle }}</p>
+        <ul class="c-web-card__list">
+            {% for item in blok.items %}
+            <li class="c-web-card__list-item">
+                <img src="{{ item.image|resize('24x24') }}" class="c-web-card__list-image">
+                <p class="c-web-card__list-caption"> {{ item.title }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="c-pricing c-pricing--big u-marg-t-xxxs">
+            <p class="c-pricing__price u-inline-block">{{ blok.price }}</p>
+            <p class="c-pricing__muted-text u-inline-block u-grey-600 u-antialiased-off u-marg-l-xxxs">{{ blok.price_muted }}</p>
+        </div>
+    </div>
+    {% if blok.link and blok.link_title %}
+        <a class="btn btn-lg btn-primary gtm-section-cta-fibre u-full-width u-block u-expand" href="{{ blok.link }}">{{ blok.link_title }}</a>
+    {% endif %}
+</div>

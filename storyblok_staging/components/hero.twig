@@ -1,0 +1,11 @@
+{{ blok._editable|raw }}
+<div class="c-hero u-pad-b-sm">
+    <div class="c-hero__slider u-full-wh u-z-back u-box-3by2--xs u-box-5by2--sm u-box-6by1 mx-auto" style="max-width: 1660px">
+        <div class="js-slider slider overflow__content u-wrapper-panel" data-dots="true" {% if blok.autoplay %}data-autoplay="10000"{% endif %}>
+            {{ item._editable|raw }}
+            {% for item in blok.items %}
+                {% include item.component ~ '.twig' with {blok: item} %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

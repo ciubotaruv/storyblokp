@@ -1,0 +1,31 @@
+{{ blok._editable|raw }}
+<div class="c-hero-card c-hero-card--fullimg c-hero__slide u-full-width u-relative u-inline-block js-slider-item">
+        {% if item.image_mobile is empty %}
+                <div class="u-wrapper-panel">
+                        <img data-src="{{ item.image|resize('1300x270') }}" class="u-fit u-full-wh lazyload">
+                </div>
+        {% endif %}
+        {% if blok.image and blok.image_mobile %}
+                <picture class="u-wrapper-panel">
+                        <source media="(max-width: 1079px)"
+                                data-srcset="{{ blok.image_mobile|resize('500x1000') }}, {{ blok.image_mobile|resize('1000x2000') }} 2x">
+
+                        <source media="(min-width: 1080px) and (max-width: 1480px)"
+                                data-srcset="{{ blok.image|resize('1000x270') }}, {{ blok.image|resize('2000x540') }} 2x">
+
+                        <source media="(min-width: 1480px)"
+                                data-srcset="{{ blok.image|resize('2000x540') }}, {{ blok.image|resize('2000x540') }} 2x">
+
+                        <img data-src="{{ blok.image|resize('250x500') }}, {{ blok.image|resize('500x1000') }} 2x"
+                                class="u-fit u-full-wh lazyload"
+                                alt="{{  item.title }}">
+                </picture>
+        {% endif %}
+        <div class="c-hero__info u-white u-wrapper-panel">
+                <span class="c-hero__title t-h1 u-block">{{  item.title }}</span>
+
+                {% if item.link and item.link_title %}
+                        <a class="btn btn-primary u-marg-t-xs gtm-section-cta-discover" href="{{ item.link }}">{{  item.link_title }}</a>
+                {% endif %}
+        </div>
+</div>

@@ -1,0 +1,32 @@
+{{ blok._editable|raw }}
+<div class="c-slider-images u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    {% if  blok.title %}
+        <div class="container">
+            <h2 class="t-h1 u-marg-b-sm">{{ blok.title }}</h2>
+        </div>
+    {% endif %}
+
+    <div class="container-fluid">
+        <div class="js-slider slider slider--same-height-cells u-relative" data-dots="true" data-arrows="true">
+            {% for item in blok.images %}
+                <div class="c-slider-images__slide js-slider-item">
+                    <div class="u-wrapper-panel">
+                    {% if item.image_mobile is empty %}
+                        <img data-src="{{ item.image|resize('1300x400') }}" class="js-image-cover lazyload">
+                    {% endif %}
+                    {% if blok.image and blok.image_mobile %}
+                        <picture>
+                            <source media="(min-width: 1080px)"
+                                    data-srcset="{{ blok.image|resize('1300x400') }}, {{ blok.image|resize('2600x800') }} 2x">
+
+                            <img data-src="{{ blok.image_mobile|resize('1280x720') }}"
+                                 class="u-fit u-full-wh lazyload"
+                                 alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}">
+                        </picture>
+                    {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

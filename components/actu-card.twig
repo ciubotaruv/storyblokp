@@ -1,0 +1,24 @@
+{{ blok._editable|raw }}
+<div class="c-blog-card u-relative u-flex flex-column u-bg-black js-slider-item">
+    <div class="c-blog-card__thumbnail u-box-7by4">
+        <picture class="u-wrapper-panel">
+            <source media="(min-width: 767px)"
+                    data-srcset="{{ blok.image|resize('420x240') }}, {{ blok.image|resize('840x480') }} 2x">
+
+            <source media="(min-width: 1080px)"
+                    data-srcset="{{ blok.image|resize('420x240') }}, {{ blok.image|resize('840x480') }} 2x">
+
+            <img data-srcset="{{ blok.image|resize('420x240') }}, {{ blok.image|resize('840x480') }} 2x"
+                 class="u-fit u-full-wh lazyload"
+                 alt="">
+        </picture>
+    </div>
+    <div class="c-blog-card__content u-pad-md u-flex flex-column justify-content-between">
+        {% if blok.title %}
+            <span class="t-h2 u-block u-white">{{ blok.title }}</span>
+        {% endif %}
+        {% if blok.link_title and blok.link %}
+            <a href="{{ blok.link }}" class="btn btn-inverse btn-secondary btn-sm u-marg-t-xs u-expand gtm-section-actu">{{ blok.link_title }}</a>
+        {% endif %}
+    </div>
+</div>

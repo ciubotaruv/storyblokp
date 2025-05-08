@@ -1,0 +1,17 @@
+{{ blok._editable|raw }}
+<!-- BEGIN SEO BLOCK -->
+<div class="c-seo container">
+    <div class="row u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+        {% if blok.balise and blok.balise == "h1" %}
+            <h1 class="t-h2 col-xs-12 col-md-4 u-marg-b-xxs--sm">{{ blok.title }}</h1>
+        {% endif %}
+        {% if blok.balise and blok.balise == "h2" %}
+            <h2 class="t-h2 col-xs-12 col-md-4 u-marg-b-xxs--sm">{{ blok.title }}</h2>
+        {% endif %}
+        {% if blok.balise and blok.balise == "span" %}
+            <span class="t-h2 col-xs-12 col-md-4 u-marg-b-xxs--sm">{{ blok.title }}</span>
+        {% endif %}
+        <div class="t-text col-xs-12 col-md-8 md-offset-1 u-grey-text">{{ blok.text|richtext }}</div>
+    </div>
+</div>
+<!-- END ACTU BLOCK -->

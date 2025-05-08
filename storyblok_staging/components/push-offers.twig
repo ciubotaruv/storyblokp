@@ -1,0 +1,19 @@
+{{ blok._editable|raw }}
+<div class="c-offer-pushes u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container u-bg-black">
+        <div class="u-pad-t-ml u-pad-b-ml u-pad-t-md--xs u-pad-b-md--xs">
+            <span class="t-h1 u-block u-marg-b-sm u-white">{{ blok.title }}</span>
+            <div class="c-offer-pushes__list row u-overflow-hidden overflow__content u-relative slider slider--fade js-slider--desktop-tablet js-slider--same-height slider--same-height-cells slider--white-arrows | js-slider"
+                data-infinite="false" data-arrows="true" data-minimum-length="2">
+                {% for item in blok.items %}
+                    {% include item.component ~ '.twig' with {blok: item} %}
+                {% endfor %}
+            </div>
+            {% if blok.link and blok.link_title %}
+                <div class="u-marg-t-sm u-center--sm">
+                    <a class="btn btn-inverse btn-secondary btn-lg gtm-section-cta-all-offers" href="{{ blok.link }}">{{ blok.link_title }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{{ blok._editable|raw }}
+<div class="c-news-card gtm-section-news u-relative u-block js-slider-item">
+    {% if blok.image.filename %}
+        <div class="c-news-card__thumbnail u-box-5by3">
+            <picture class="u-wrapper-panel">
+                <img data-srcset="{{ blok.image|resize('500x300') }}, {{ blok.image|resize('1000x600') }} 2x"
+                     class="u-fit u-full-wh lazyload"
+                     alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}">
+            </picture>
+        </div>
+    {% endif  %}
+    <div class="c-news-card__info u-marg-t-xxs">
+        {% if blok.link and blok.title  %}
+            <a href="{{ blok.link}}" class="t-h2 u-orange u-marg-b-xxxs u-expand">{{ blok.title}}</a>
+        {% endif  %}
+        {% if blok.link is empty %}
+            <span class="t-h2 u-block u-orange2 u-marg-b-xxxs">{{ blok.title}}</span>
+        {% endif %}
+        <p class="t-text u-grey-text">{{ blok.text}}</p>
+    </div>
+</div>

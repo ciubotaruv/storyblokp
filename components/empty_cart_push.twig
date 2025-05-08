@@ -1,0 +1,34 @@
+{{ blok._editable|raw }}
+{% for item in blok.items %}
+  <div class="col-12 col-md-3 col-sm-6 u-relative empty-cart-push__item">
+  {% if item.url.url %}
+    <a class="u-full-wh" href="{{ item.url.url }}">
+  {% endif %}
+  <div class="u-inline-block u-full-width u-relative u-overflow-hidden u-center u-box-3by2 u-box-2by1--sm u-marg-b-xxs--sm" style="background-color: {{ item.color.color }};">
+    <div class="u-black u-full-wh u-z-back u-wrapper-panel u-flex flex-column justify-content-center">
+    <picture>
+      <source media="(max-width: 1079px)" 
+              srcset="{{ item.icon[0]|resize('35x35') }}, {{ item.icon[0]|resize('70x70') }} 2x">
+
+      <source media="(min-width: 1080px) and (max-width: 1480px)"
+              srcset="{{ item.icon[0]|resize('35x35') }}, {{ item.icon[0]|resize('70x70') }} 2x">
+
+      <source media="(min-width: 1480px)"
+              srcset="{{ item.icon[0]|resize('35x35') }}, {{ item.icon[0]|resize('70x70') }} 2x">
+
+      <img src="{{ item.icon[0]|resize('35x35') }}, {{ item.icon[0]|resize('70x70') }} 2x"
+              class="js-image-cover lazyload"
+              alt="{{ item.title }}">
+    </picture>
+    {% if item.description %}
+      <span class="u-block u-marg-t-sm t-text u-bold">
+        {{ item.description }}
+      </span>
+     {% endif %}
+    </div>
+  </div>
+  {% if item.url.url %}
+    </a>
+  {% endif %}
+  </div>
+{% endfor %}

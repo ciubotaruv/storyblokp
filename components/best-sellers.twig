@@ -1,0 +1,42 @@
+{{ blok._editable|raw }}
+<div class="c-best-sellers u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container">
+        {% if  blok.title %}
+            <span class="t-h1 u-block u-marg-b-sm">{{ blok.title }}</span>
+        {% endif %}
+        <div class="c-best-sellers__list u-overflow-hidden overflow__content slider slider--sm js-slider" data-infinite="false">
+            {% for item in blok.columns %}
+                {% include item.component ~ '.twig' with {blok: item} %}
+            {% endfor %}
+        </div>
+        <!-- IF CTA -->
+        {% if blok.link and blok.link_title %}
+            <div class="u-marg-t-m u-center--xs">
+                <a class="btn btn-secondary btn-lg u-marg-t-md gtm-section-cta-all-products" href="{{ blok.link }}">{{ blok.link_title }}</a>
+            </div>
+        {% endif %}
+    </div>
+
+  <script>
+    let data = {{ blok.columns|json_encode()|raw }};
+    let impressions = [];
+    window.dataLayer = window.dataLayer || [] ;
+
+    for (itemIndex in data) {
+      impressions.push({
+        id: data[itemIndex]._uid,
+        name: data[itemIndex].model,
+        category: 'Téléphones',
+        brand: data[itemIndex].brand,
+        price: data[itemIndex].pricing,
+        position: itemIndex,
+        list: 'block best sellers'
+      });
+    }
+
+    window.dataLayer.push({
+      'event': 'impression',
+      'ecommerce': impressions
+    });
+  </script>
+</div>

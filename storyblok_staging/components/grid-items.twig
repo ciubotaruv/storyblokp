@@ -1,0 +1,12 @@
+{{ blok._editable|raw }}
+<div class="c-grid-items">
+    <div class="container">
+        <div class="row">
+            {% for item in blok.items %}
+                <div class="col-12 col-sm-6 col-lg-4 pt-3 pt-sm-4 pb-3">
+                    {% include item.component ~ '.twig' with {blok: item} %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

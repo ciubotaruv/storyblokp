@@ -1,0 +1,18 @@
+{{ blok._editable|raw }}
+<div class="c-actuality u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+	<div class="container">
+		{% if  blok.title %}
+			<span class="t-h1 u-block u-marg-b-sm">{{ blok.title }}</span>
+		{% endif %}
+		<div class="c-actuality__list slider u-flex u-block--sm slider--sm slider--same-height-cells js-slider" data-infinite="false">
+			{% for item in blok.items %}
+				{% include item.component ~ '.twig' with {blok: item} %}
+			{% endfor %}
+		</div>
+		<div class="u-marg-t-m u-center--xs">
+			{% if blok.link_title and blok.link %}
+				<a class="btn btn-secondary btn-lg u-marg-t-md" href="{{ blok.link }}">{{ blok.link_title }}</a>
+			{% endif %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+{{ blok._editable|raw }}
+<div class="u-marg-t-md u-marg-b-md u-marg-t-sm--xs u-marg-b-sm--xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 offset-md-1">
+                {% if blok.title %}
+                    <h2 class="t-h1">{{ blok.title }}</h2>
+                {% endif %}
+                <div class="c-range-select js-range-select">
+                    <div class="c-range-select__range-container">
+                        <input class="gtm-section-speed-choice c-custom-range js-range-input u-marg-t-sm" type="range" value="0" min="0"
+                               max="{{ blok.debitcards|length-1 }}" step="1">
+                        <ul class="c-range-select__values">
+                            {% for item in blok.debitcards %}
+                                <li class="c-range-select__values-item js-range-value-item">
+                                    <span>{{ item.bandwidth }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <ul class="c-range-select__items-container u-relative js-items-container">
+                        {% for item in blok.debitcards %}
+                            <li class="c-range-select__item js-item">
+                                {% include item.component ~ '.twig' with {blok: item} %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-5 offset-md-1 u-marg-t-md--xs">
+                <div class="c-image-push">
+                    {% if blok.push_image %}
+                        <div class="u-wrapper-panel">
+                        {% if blok.push_link %}
+                            <a href="{{ blok.push_link }}" class="gtm-section-cta-fibre" >
+                        {% endif %}
+                            <img data-srcset="{{ blok.push_image|resize('600x600') }}, {{ blok.push_image|resize('1200x1200') }} 2x" class="u-fit u-full-wh lazyload">
+                        {% if blok.push_link %}
+                            </a>
+                        {% endif %}
+                        </div>
+                    {% endif %}
+                    <div class="c-image-push__content">
+                        {% if blok.push_title %}
+                            <h2 class="t-h1 u-white u-marg-b-xxxs">{{ blok.push_title }}</h2>
+                        {% endif %}
+                        {% if blok.push_subtitle %}
+                            <p class="t-text u-white u-marg-b-xs">{{ blok.push_subtitle }}</p>
+                        {% endif %}
+                        {% if blok.push_link and blok.push_linktitle %}
+                            <a href="{{ blok.push_link }}" class="gtm-section-cta-fibre btn btn-inverse btn-info u-expand">{{ blok.push_linktitle }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{{ blok._editable|raw }}
+<div class="u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container">
+        <div class="row">
+            <div class="{{ blok.mirror == 'false' ? 'col-12 col-md-6' : 'col-12 col-md-6 offset-md-2 order-1 order-sm-2' }}">
+                <div class="u-relative">
+                    <video data-id="{{ blok.youtube_id }}" class="c-video-player__video js-youtube-player" data-controls="true" id="youtube-video-{{ blok.youtube_id }}"></video>
+                    {% if blok.image.id %}
+                        <div class="c-video-player__cover u-wrapper-panel" id="cover-{{ blok.youtube_id }}">
+                            <picture>
+                                <source media="(min-width: 767px)"
+                                        data-srcset="{{ blok.image|resize('640x360') }}, {{ blok.image|resize('1280x720') }} 2x">
+            
+                                <source media="(min-width: 1080px)"
+                                        data-srcset="{{ blok.image|resize('640x360') }}, {{ blok.image|resize('1280x720') }} 2x">
+            
+                                <img data-srcset="{{ blok.image|resize('640x360') }}, {{ blok.image|resize('1280x720') }} 2x"
+                                     class="u-fit u-full-wh lazyload"
+                                     alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}">
+                            </picture>
+                        </div>
+                    {% endif %}
+                    <div class="c-video-player__playbtn" id="icon-{{ blok.youtube_id }}"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 align-self-center {{ blok.mirror == 'true' ? 'order-2 order-sm-1' : 'offset-md-1' }}">
+                <span class="t-h2 u-block u-marg-b-xxs u-marg-t-sm--sm">{{ blok.title }}</span>
+                <div class="t-text u-grey-text">{{ blok.text|richtext }}</div>
+
+                {% if blok.price_value %}
+                    <div class="c-pricing u-marg-t-xs">
+                        <p class="c-pricing__price">{{ blok.price_value }}</p>
+                        <p class="c-pricing__muted-text">{{ blok.price_text }}</p>
+                    </div>
+                {% endif %}
+
+                {% if blok.link and blok.link_title %}
+                    <a href="{{ blok.link }}" class="btn btn-info u-marg-t-sm gtm-section-cta-videotext" >{{ blok.link_title }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

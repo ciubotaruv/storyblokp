@@ -1,0 +1,10 @@
+{{ blok._editable|raw }}
+<div class="c-news u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container">
+        <div class="c-news__list slider slider--sm js-slider u-relative" data-infinite="false">
+            {% for item in blok.items %}
+                {% include item.component ~ '.twig' with {blok: item} %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

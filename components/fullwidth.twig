@@ -1,0 +1,57 @@
+{{ blok._editable|raw }}
+<div class="c-background-text u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs" >
+    <div class="container container--reset-xs">
+        {% if blok.link %}
+            <a href="{{ blok.link }}" class="gtm-section-cta-fullwidth" >
+        {% endif %}
+        <div class="u-relative px-3 px-sm-0" id="fullwidth-banner">
+            <div class="c-background-text__image">
+                {% if blok.image_mobile is empty %}
+                    <img data-src="{{ blok.image|resize('1300x400') }}" class="js-image-cover lazyload"
+                    style="width: 100%; border-radius: {{ blok.rounded ? '16px' : '0px' }};">
+                {% endif %}
+                {% if blok.image and blok.image_mobile %}
+                    <picture>
+                        <source media="(min-width: 767px)"
+                                data-srcset="{{ blok.image|resize('1300x333') }}, {{ blok.image|resize('2600x800') }} 2x">
+
+                        <!-- desktop -->
+                        <source media="(min-width: 1080px)"
+                                srcset="{{ blok.image|resize('1300x333') }}">
+
+                        <!-- desktop retina -->
+                        <source media="(min-width: 1080px) and (-webkit-min-device-pixel-ratio: 2)"
+                                srcset="{{ blok.image|resize('2600x800') }}">
+
+                        <!-- mobile -->
+
+                            <img src="{{ blok.image_mobile|resize('640x360') }}"
+                                class="js-image-cover lazyload"
+                                alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}"
+                                style="width: 100%; border-radius: {{ blok.rounded ? '16px' : '0px' }};"> 
+                    </picture>
+                {% endif %}
+            </div>
+            <div class="c-background-text__content-wrap u-wrapper-panel u-white">
+                <div class="c-background-text__content-inner ml-3 ml-sm-0">
+                    {% if blok.title %}
+                        <span style="color: {{ blok.title_color }}" class="t-h2 u-block u-marg-b-xxs">{{ blok.title }}</span>
+                    {% endif %}
+                    <div style="color: {{ blok.text_color }}" class="t-text">{{ blok.text|richtext }}</div>
+                    {% if blok.link and blok.link_title %}
+
+                        {% if blok.cta_color == 'light' %}
+                            <a href="{{ blok.link }}" class="btn btn-inverse btn-info u-expand u-marg-t-sm gtm-section-ad-banner btn-ad-banner-fiber">{{ blok.link_title }}</a>
+                            {% else %}
+                            <a href="{{ blok.link }}" class="btn btn btn-info u-expand u-marg-t-sm gtm-section-ad-banner btn-ad-banner-fiber">{{ blok.link_title }}</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% if blok.link %}
+            </a>
+        {% endif %}
+    </div>
+</div>
+

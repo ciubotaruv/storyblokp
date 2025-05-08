@@ -1,0 +1,18 @@
+{{ blok._editable|raw }}
+<div class="c-video-player u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container container--reset-xs">
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1">
+                <div class="u-relative">
+                    <video data-id="{{ blok.youtube_id }}" class="c-video-player__video js-youtube-player" data-controls="true" id="youtube-video-{{ blok.youtube_id }}"></video>
+                    {% if blok.image.id %}
+                        <div class="c-video-player__cover u-wrapper-panel" id="cover-{{ blok.youtube_id }}">
+                            <img class="u-fit u-full-wh lazyload" src="{{ blok.image|resize('1480x720') }}">
+                        </div>
+                    {% endif %}
+                    <div class="c-video-player__playbtn" id="icon-{{ blok.youtube_id }}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

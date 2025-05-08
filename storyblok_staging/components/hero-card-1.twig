@@ -1,0 +1,44 @@
+{{ blok._editable|raw }}
+<div class="c-hero-card c-hero__slide u-full-width u-relative u-inline-block js-slider-item">
+    {% if item.link %}
+        {% if item.link_title is empty %}
+            <a href="{{ item.link }}">
+        {% endif %}
+    {% endif %}
+    <div class="u-flex u-full-wh">
+        {% if item.image_mobile is empty %}
+            <img data-src="{{ item.image|resize('1000x270') }}" class="u-fit u-full-wh lazyload">
+        {% endif %}
+        {% if blok.image and blok.image_mobile %}
+            <picture class="c-hero__thumbnail u-relative">
+                <source media="(max-width: 1079px)"
+                        srcset="{{ blok.image_mobile|resize('500x1000') }}, {{ blok.image_mobile|resize('1000x2000') }} 2x">
+
+                <source media="(min-width: 1080px) and (max-width: 1480px)"
+                        srcset="{{ blok.image|resize('1000x270') }}, {{ blok.image|resize('2000x540') }} 2x">
+
+                <source media="(min-width: 1480px)"
+                        srcset="{{ blok.image|resize('2000x540') }}, {{ blok.image|resize('2000x540') }} 2x">
+
+                <img src="{{ blok.image|resize('250x500') }}, {{ blok.image|resize('500x1000') }} 2x"
+                        class="u-fit u-full-wh lazyload"
+                        alt="{{ item.title }}">
+            </picture>
+        {% endif %}
+        <div class="c-hero__info u-bg-black u-white u-z-back u-relative">
+            {% if item.label %}
+                <span class="t-label t-label--big u-marg-b-xxs u-bg-orange2 u-black">{{  item.label }}</span>
+            {% endif %}
+            <span class="c-hero__title t-h1 u-block">{{  item.title }}</span>
+            <p class="c-hero__muted u-grey-600">{{  item.text }}</p>
+            {% if item.link and item.link_title  %}
+                <a class="btn btn-inverse btn-info u-marg-t-xs gtm-section-cta-discover u-expand" href="{{ item.link }}">{{  item.link_title }}</a>
+            {% endif %}
+        </div>
+    </div>
+    {% if item.link %}
+        {% if item.link_title is empty %}
+            </a>
+        {% endif %}
+    {% endif %}
+</div>

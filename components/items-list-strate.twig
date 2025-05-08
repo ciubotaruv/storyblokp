@@ -1,0 +1,56 @@
+{{ blok._editable|raw }}
+<div class="container" id="container-items-list">
+    <div class="c-items-list row u-marg-t-md u-marg-b-md u-marg-t-sm--xs u-marg-b-sm--xs">
+        {% if blok.title  %}
+            <div class="col-12 col-md-4">
+                <span class="t-h2 t-h2--big u-block u-orange2 u-marg-b-sm">{{ blok.title }}</span>
+                <div class="c-richtext">{{ blok.text|richtext }}</div>
+            </div>
+            <div class="col-12 offset-md-1 col-md-7">
+        {% endif %}
+        {% if not blok.title  %}
+            <div class="col-12 four-cols">
+        {% endif %}
+            <div class="row c-items-list__list">
+                {% for item in blok.items %}
+                    {{ item._editable|raw }}
+                    <div class="col-md-3 col-sm-6 col-12 c-picto-item u-relative u-marg-b-sm">
+                        {% if item.image %}
+                            <img src="{{ item.image|resize('20x20') }}" class="c-picto-item__picto lazyload">
+                        {% endif %}
+                        <div class="c-picto-item__content">
+                            {% if item.link and item.title  %}
+                                <a href="{{ item.link }}" class="c-picto-item__content-title u-expand">{{ item.title }}</a>
+                            {% endif %}
+                            {% if not item.link and item.title  %}
+                                <p class="c-picto-item__content-title no-link">{{ item.title }}</p>
+                            {% endif %}
+                            {% if item.text %}
+                                <p class="c-picto-item__content-muted">{{ item.text }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% block javascripts %}
+    <script type="text/javascript">
+
+
+        const fiber_card = document.getElementById('fiber-plan-card');
+        const container_banner_fiber = document.getElementById('fullwidth-banner');
+        const container_items_fiber = document.getElementById('container-items-list');
+        const btn_banner = container_banner_fiber.querySelector('.btn-ad-banner-fiber')
+        if (fiber_card) {
+            container_items_fiber.classList.add("c-card-block");
+            container_banner_fiber.appendChild(
+                fiber_card
+            );
+        btn_banner.remove()
+        }
+    </script>
+{% endblock %}

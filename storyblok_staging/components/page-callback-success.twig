@@ -1,0 +1,152 @@
+<!-- 404 manage in storyblok -->
+
+{{ blok._editable|raw }}
+<div class="c-page-callback-success u-pad-t-sm u-pad-b-lg u-pad-t-xs--xs u-pad-b-xs--xs">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+                <div class="col-12 fiber-contact-success">
+
+                    <div class="row">
+                      <div class="col-12">
+                        
+                        <div class="alert-success d-flex my-3 mt-4">
+                          <div>
+                            <h1 class="pt-1">Thank you! Your request has been sent</h1>
+                          </div>
+                          <!-- <span class="alert-icon ml-3"><span class="sr-only">Success</span></span> -->
+                        </div>
+              
+                      </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                          <p style="font-size: 16px;">An advisor will call you back to verify your eligibility within 48 hours</p>
+                        </div>
+                    </div>
+                      
+                    <div class="row">
+                        <div class="col-12 mt-4 mb-2 py-1">
+                          <h3 style="font-size: 26px;">Want to chat with us?</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="contactSuccessImage col-12 col-sm-6 col-xl-5">
+                          <div class="img mb-3">
+                            <img src="" alt="">
+                          </div>
+                
+                          <div class="buttons-group row"  style="opacity: 0;">
+                            <div id="btn1" class="col-6 col-md-4 pr-md-2 idz_btn_fix">
+                              <div
+                                id="iadvize-btn-success-page-offline"
+                                class="btn btn-primary u-full-width u-block px-0">
+                                  Leave us a message
+                              </div>
+                              <div
+                                id="iadvize-btn-success-page-online"
+                                class="btn btn-primary u-full-width u-block px-0"
+                                style="display: none">
+                                  Chat live
+                              </div>
+                              <div
+                                id="iadvize-btn-success-page-busy"
+                                class="btn btn-primary u-full-width u-block px-0"
+                                style="display: none">
+                                  Chat live
+                              </div>
+                            </div>
+                    
+                            <div id="btn2" class="col-6 col-md-4 px-md-2 idz_btn_fix">
+                              <div
+                                id="iadvize-btn-success-page-call-online"
+                                class="btn btn-primary u-full-width u-block px-0">
+                                Call me back
+                              </div>
+                            </div>
+                    
+                            <div id="btn3" class="col-12 mt-3 mt-md-0 col-md-4 pl-md-2">
+                              <a
+                                href="getLink"
+                                id="getLink"
+                                class="btn btn-secondary u-full-width u-block px-0">
+                                Find a shop
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+    // Temporary solution
+    // @TODO: find solution for: Invalid Form Key
+    document.addEventListener('DOMContentLoaded', function() {
+        const locale = window.LOCALE
+        const shopLink = locale == 'fr-FR' ? 'fr/trouver-un-shop/' : 'en/store-locator/';
+        const shopBtn = document.getElementById('getLink')
+        shopBtn.setAttribute('href', window.location.origin + '/' + shopLink)
+        const title = document.querySelector('.alert-success h1')
+        const pageText = document.querySelector('.fiber-contact-success p')
+        const titleSubtitle = document.querySelector('.fiber-contact-success h3')
+        const btnGroup1 = document.querySelector('.contactSuccessImage #btn1')
+        const btnGroup3 = document.querySelector('.contactSuccessImage #btn3')
+        const contactbuttonsGroup = document.querySelector('.contactSuccessImage .buttons-group')
+        const btn1 = document.querySelector('.contactSuccessImage #iadvize-btn-success-page-offline')
+        const btn2 = document.querySelector('.contactSuccessImage #iadvize-btn-success-page-online')
+        const btn3 = document.querySelector('.contactSuccessImage #iadvize-btn-success-page-busy')
+        // const btn4 = document.querySelector('.contactSuccessImage #iadvize-btn-success-page-call-offline')
+        const btn5 = document.querySelector('.contactSuccessImage #iadvize-btn-success-page-call-online')
+        // const btn6 = document.querySelector('.contactSuccessImage #iadvize-btn-success-page-call-busy')
+
+        if(locale === 'fr-FR'){
+            title.innerHTML = 'Merci ! Votre demande a été prise en compte'
+            pageText.innerHTML = 'Un conseiller vous rappellera sous 48 heures pour vérifier votre éligibilité'
+            titleSubtitle.innerHTML = 'Vous souhaitez en discuter ?'
+            btn1.innerHTML = 'Laissez-nous un message'
+            // btn4.innerHTML = 'Rappelez-moi'
+            btn5.innerHTML = 'Rappelez-moi'
+            // btn6.innerHTML = 'Rappelez-moi'
+            shopBtn.innerHTML = 'Trouver un shop'
+        }
+
+        if(btn5){
+
+          var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutationRecord) {
+                if (btn5.style.display == 'none'){
+                  btn5.parentElement.style.display = 'none'
+                  btnGroup1.classList = 'col-12 col-md-6 pr-md-2 idz_btn_fix'
+                  btnGroup3.classList = 'col-12 mt-3 mt-md-0 col-md-6 pl-md-2'
+                }
+              });    
+          });
+
+          var target = btn5
+          observer.observe(target, { attributes : true, attributeFilter : ['style'] });
+        }
+
+        setTimeout(() => {
+          contactbuttonsGroup.style.opacity = '1'
+        }, 1000);
+
+        const blockImage = document.querySelector('.contactSuccessImage img')
+        blockImage.src = localStorage.getItem('contactImgUrl')
+
+
+        // return window.location.origin + '/' + shopLink
+        if (document.referrer.includes("configurator")) {
+            const alertContainers = document.querySelectorAll('.alert-container');
+
+            alertContainers.forEach(function(alertContainer) {
+                alertContainer.style.display = 'none';
+            });
+        }
+    });
+</script>

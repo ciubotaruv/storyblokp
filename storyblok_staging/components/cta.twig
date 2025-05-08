@@ -1,0 +1,8 @@
+{{ blok._editable|raw }}
+<div class="u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container u-{{ blok.alignment }}">
+        {% if blok.link and blok.link_title %}
+            <a class="btn btn-lg btn-{{ blok.appearance }}" href="{{ blok.link }}">{{ blok.link_title }}</a>
+        {% endif %}
+    </div>
+</div>

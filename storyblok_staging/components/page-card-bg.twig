@@ -1,0 +1,18 @@
+{{ blok._editable|raw }}
+<div class="c-page-card c-page-card--bg u-relative u-full-height">
+    <div class="c-page-card__thumbnail">
+        <img class="u-contain u-full-wh lazyload" src="{{ item.image|resize('580x580')}}"
+        style="border-radius: {{ blok.rounded ? '16px' : '0px' }};">
+    </div>
+    <div class="c-page-card__info">
+        <h2 style="color: {{ blok.title_color }}" class="c-page-card__info-title">{{  blok.title }}</h2>
+        <p style="color: {{ blok.text_color }}" class="c-page-card__info-text">{{  blok.text }}</p>
+        {% if blok.link and blok.link_title  %}
+            {% if blok.cta_color == 'light' %}
+                <a href="{{  blok.link }}" class="c-page-card__info-cta btn btn-inverse btn-info u-expand gtm-grid-item">{{  blok.link_title }}</a>
+            {% else %}
+                <a href="{{  blok.link }}" class="c-page-card__info-cta btn btn-info u-expand gtm-grid-item">{{  blok.link_title }}</a>
+            {% endif  %}
+        {% endif  %}
+    </div>
+</div>

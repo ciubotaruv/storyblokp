@@ -1,0 +1,57 @@
+{{ blok._editable|raw }}
+<div class="c-plan-card-big">
+    <div class="u-relative">
+        <!-- IF LABEL IS SET -->
+        {% if blok.special == true %}
+            <span class="c-plan-card-big__label">Offre spéciale</span>
+        {% endif %}
+
+        <div class="c-plan-card-big__top" style="background-color: {{ blok.color }}">
+            <div class="c-pricing c-pricing--plan">
+                <!-- PLAN PRICE -->
+                <div class="c-pricing__price u-inline-block">
+                    <div class="c-pricing__left-amount u-black">39</div>
+                    <div class="c-pricing__right-amount u-black">
+                        <span>€</span>
+                        <span>/mois</span>
+                    </div>
+                </div>
+                <!-- PLAN PRICE MUTED TEXT -->
+                <div class="c-pricing__muted-text u-marg-t-xxs">Avec ou sans engagement</div>
+            </div>
+        </div>
+        <div class="c-plan-card-big__content">
+            <!-- ITEMS LIST -->
+            <div class="u-marg-b-xs">
+                <!-- PLAN TITLE -->
+                <p class="t-h2">MoveUnlimited</p>
+                <!-- IF PLAN TITLE LINE 2 -->
+                <p class="t-h2 u-grey-text">illimité</p>
+            </div>
+            <ul class="t-text">
+                <li class="c-plan-card-big__bullet-point u-marg-b-xxxs">
+                    <!-- ITEM ICON (editable in BO) -->
+                    <i class="c-plan-card-big__bullet-icon t-icon t-icon--sm t-icon--bg" style="background-image: url(https://via.placeholder.com/22x22);"></i>
+                    <!-- ITEM TEXT -->
+                    <span>Internet ilimité 4G+</span>
+                </li>
+                <li class="c-plan-card-big__bullet-point u-marg-b-xxxs">
+                    <!-- ITEM ICON (editable in BO) -->
+                    <i class="c-plan-card-big__bullet-icon t-icon t-icon--sm t-icon--bg" style="background-image: url(https://via.placeholder.com/22x22);"></i>
+                    <!-- ITEM TEXT -->
+                    <span>Appels et SMS illimités</span>
+                </li>
+                <li class="c-plan-card-big__bullet-point u-marg-b-xxxs">
+                    <!-- ITEM ICON (editable in BO) -->
+                    <i class="c-plan-card-big__bullet-icon t-icon t-icon--sm t-icon--bg" style="background-image: url(https://via.placeholder.com/22x22);"></i>
+                    <!-- ITEM TEXT -->
+                    <span>En Europe et aux USA : Internet 30GB, Appels et SMS illimités. Dans le monde : 500 unités + 1GB dans la zone best destinations.</span>
+                </li>
+            </ul>
+        </div>
+        <button class="u-expand btn btn-info u-full-width u-center u-block">Commander</button>
+    </div>
+    <div class="u-center u-marg-t-xs">
+        <button class="t-link-arrow u-bold">Voir l'offre en détail</button>
+    </div>
+</div>

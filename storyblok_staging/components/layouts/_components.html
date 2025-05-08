@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storyblok</title>
+    <link rel="stylesheet" href="/storyblok_staging/assets/dist/css/theme.css">
+</head>
+<body>
+<div class="page-wrapper"><!-- MAGENTO WRAPPER MARKUP -->
+
+{% set hero = {
+"content":{
+    "items":[
+        {
+            "label":"Nouveau",
+            "title":"Nouveau Samsung Galaxy S20+",
+            "text":"Découvrez les offres Livebox Up et profitez du Décodeur TV UHD 4K, avec la TV d’Orange jusqu’à 160 chaînes.",
+            "link":"https://test",
+            "link_title":"Précommander",
+            "component": "hero-card-2"
+        },
+        {
+            "label":"Nouveau",
+            "title":"Découvrez les nouvelles offres Up | Internet - TV - Téléphone fixe",
+            "text":"Découvrez les offres Livebox Up et profitez du Décodeur TV UHD 4K, avec la TV d’Orange jusqu’à 160 chaînes.",
+            "link":"https://test",
+            "link_title":"Découvrir",
+            "component": "hero-card-1"
+        },
+        {
+            "label":"Nouveau",
+            "title":"Samsung Galaxy S20+ | S20 Ultra 5G",
+            "text":"Une paire de Galaxy Buds+ offerte d'une valeur de 169€",
+            "link":"https://test",
+            "link_title":"Découvrir",
+            "component": "hero-card-1"
+        },
+        {
+            "label":"Nouveau",
+            "title":"Adoptez la Fibre Orange et bénéficiez d'une connexion en très haut débit",
+            "text":"Toute la maison profite en même temps d'un débit idéal sans ralentissement.",
+            "link":"https://test",
+            "link_title":"Découvrir",
+            "component": "hero-card-1"
+        }
+    ]
+}
+} %}
+{% include 'hero.twig' with {blok: hero.content} %}
+
+
+{% set infobg = {
+    "content":{
+        "info_bgcolor" : "#fed353",
+        "label_bgcolor" : "#000000",
+        "label_title" : "Covid-19",
+        "text" : "Orange s'engage à vos côtés. Des temps exceptionnels demandent des mesures exceptionelles.",
+        "link" : "covidtest",
+        "link_title" : "En savoir plus"
+    }
+} %}
+{% include 'info-bg.twig' with {blok: infobg.content} %}
+
+
+{% set faq = {
+    "content":{
+        "title":"Orange vous accompagne",
+        "link":"ddd",
+        "link_title":"Consulter notre FAQ",
+        "items":[
+            {content:{"title":"Contacter le service client","link":"https://test"}},
+            {content:{"title":"S’inscrire sur Orange","link":"https://test"}},
+            {content:{"title":"Configurer mon offre","link":"https://test"}},
+            {content:{"title":"Problème de facture","link":"https://test"}},
+            {content:{"title":"Bientôt à Luxembourg","link":"https://test"}},
+            {content:{"title":"Je pars à l’étranger","link":"https://test"}},
+            {content:{"title":"J’ai perdu mon mobile","link":"https://test"}}
+        ]
+    }
+} %}
+{% include 'faq.twig' with {blok: faq.content} %}
+
+
+{% set imagetext = {
+    "content":{
+        "title":"Une présence sur tout le territoire pour un réseau mobile optimal",
+        "text":"Assurer une couverture parfaite de la population fait partie de nos priorités. Nos équipes travaillent en continu afin d’améliorer chaque jour la connectivité et d’augmenter le nombre de site pour vous offrir une connectivité enrichie.",
+        "link":"ddd",
+        "link_title":"Découvrir",
+        "mirror": "false"
+    }
+} %}
+{% include 'imagetext.twig' with {blok: imagetext.content} %}
+
+
+{# imagetext with alternative appearance (mirror) #}
+{% set imagetext = {
+    "content":{
+        "title":"Une présence sur tout le territoire pour un réseau mobile optimal",
+        "text":"Assurer une couverture parfaite de la population fait partie de nos priorités. Nos équipes travaillent en continu afin d’améliorer chaque jour la connectivité et d’augmenter le nombre de site pour vous offrir une connectivité enrichie.",
+        "link":"ddd",
+        "link_title":"Découvrir",
+        "mirror": "true"
+    }
+} %}
+{% include 'imagetext.twig' with {blok: imagetext.content} %}
+
+
+{% set bestsellers = {
+    "content":{
+        "title": "Les meilleures ventes orange",
+        "columns": [
+            {
+                "logo": {
+                "id": null,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": null,
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "brand": "Apple",
+                "image": {
+                "id": 1541089,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": "",
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "pricing": "60€",
+                "component": "simple-product-card",
+                "pricing_muted": "Avec abonnement "
+            },
+            {
+                "logo": {
+                "id": null,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": null,
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "brand": "Apple",
+                "image": {
+                "id": 1541089,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": "",
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "pricing": "59€",
+                "component": "simple-product-card",
+                "pricing_muted": "Avec abonnement "
+            },
+            {
+                "logo": {
+                "id": null,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": null,
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "brand": "Apple",
+                "image": {
+                "id": 1541089,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": "",
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "pricing": "159€",
+                "component": "simple-product-card",
+                "pricing_muted": "Avec abonnement "
+            },
+            {
+                "logo": {
+                "id": null,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": null,
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "brand": "Apple",
+                "image": {
+                "id": 1541089,
+                "alt": null,
+                "name": "",
+                "focus": null,
+                "title": null,
+                "filename": "",
+                "copyright": null,
+                "fieldtype": "asset"
+                },
+                "pricing": "69€",
+                "component": "simple-product-card",
+                "pricing_muted": "Avec abonnement "
+            }
+        ],
+        "component": "best-sellers"
+    }
+} %}
+{% include 'best-sellers.twig' with {blok: bestsellers.content} %}
+
+
+{% set pushoffers = {
+    "content":{
+        "title":"Découvrez nos offres du moment",
+        "link":"ddd",
+        "link_title":"Afficher toutes les offres",
+        "items":[
+            {
+                "title" : "Réduction sur smartphone",
+                "text" : "Profitez de l’Iphone 11 Pro Max pour toutes souscription à un forfait BeUnlimited",
+                "price" : "59€",
+                "subtitle1" : "Par mois",
+                "subtitle2" : "Engagement 24 mois",
+                "link" : "test",
+                "link_title" : "J’en profite",
+                "component" : "offer-card-1",
+            },
+            {
+                "title" : "Réduction sur smartphone",
+                "text" : "Profitez de l’Iphone 11 Pro Max pour toutes souscription à un forfait BeUnlimited",
+                "price" : "59€",
+                "subtitle1" : "Par mois",
+                "subtitle2" : "Engagement 24 mois",
+                "link" : "test",
+                "link_title" : "J’en profite",
+                "component" : "offer-card-2",
+            },
+            {
+                "title" : "Réduction sur smartphone",
+                "text" : "Profitez de l’Iphone 11 Pro Max pour toutes souscription à un forfait BeUnlimited",
+                "price" : "59€",
+                "subtitle1" : "Par mois",
+                "subtitle2" : "Engagement 24 mois",
+                "link" : "test",
+                "link_title" : "J’en profite",
+                "component" : "offer-card-1",
+            }
+        ],
+        "component": "push-offers"
+    }
+} %}
+{% include 'push-offers.twig' with {blok: pushoffers.content} %}
+
+
+{% set fullwidth = {
+    "content":{
+        "title" : "Orange récompense votre fidélité",
+        "text" : "Des cadeaux sous toutes les formes: surprises, invitations à des concerts, événements exclusifs, place de cinéma… Et plus encore.",
+        "link" : "ddd",
+        "link_title" : "Découvrir",
+        "appearance" : "default"
+    }
+} %}
+{% include 'fullwidth.twig' with {blok: fullwidth.content} %}
+
+
+{% set seo = {
+    "content":{
+        "title" : "Titre SEO Lorem ispum dolor sit amet consectetur",
+        "text" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Donec elementum ligula eu sapien consequat eleifend. Donec nec dolor erat, condimentum sagittis sem. Praesent porttitor porttitor risus, dapibus rutrum ipsum gravida et. Integer lectus nisi, facilisis sit amet eleifend nec, pharetra ut augue. Integer quam nunc, consequat nec egestas ac, volutpat ac nisi. Sed consectetur dignissim dignissim. Donec pretium est sit amet ipsum fringilla feugiat. Aliquam erat volutpat. Maecenas scelerisque, orci sit amet cursus tincidunt, libero nisl eleifend tortor, vitae"
+    }
+} %}
+{% include 'seo.twig' with {blok: seo.content} %}
+
+
+{% set actu = {
+    "content":{
+        "title" : "Titre SEO Lorem ispum dolor sit amet consectetur",
+        "link" : "test",
+        "link_title" : "Voir toutes les actualités",
+        "items":[
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages",
+                "link" : "test",
+                "link_title" : "Lire l’article",
+                "component" : "actu-card",
+            },
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages",
+                "link" : "test",
+                "link_title" : "Lire l’article",
+                "component" : "actu-card",
+            },
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages",
+                "link" : "test",
+                "link_title" : "Lire l’article",
+                "component" : "actu-card",
+            }
+        ]
+    }
+} %}
+{% include 'actu.twig' with {blok: actu.content} %}
+
+
+{% set news = {
+    "content":{
+        "items":[
+            {
+                "title" : "La eSIM est arrivée",
+                "text" : "Premier opérateur à lancer l’eSIM, découvrez tous les avantages de cette solution.",
+                "link" : "test",
+                "component" : "news-card",
+            },
+            {
+                "title" : "Les offres love",
+                "text" : "Regarder, surfer, jouer, téléphonner, le tout sans aucune limite.",
+                "link" : "test",
+                "component" : "news-card",
+            },
+            {
+                "title" : "La famille avant tout",
+                "text" : "La sélection Orange pour le premier équipement mobile de votre enfant.",
+                "link" : "test",
+                "component" : "news-card",
+            },
+            {
+                "title" : "La eSIM est arrivée",
+                "text" : "Premier opérateur à lancer l’eSIM, découvrez tous les avantages de cette solution.",
+                "link" : "test",
+                "component" : "news-card",
+            },
+            {
+                "title" : "Les offres love",
+                "text" : "Regarder, surfer, jouer, téléphonner, le tout sans aucune limite.",
+                "link" : "test",
+                "component" : "news-card",
+            }
+        ]
+    }
+} %}
+{% include 'news.twig' with {blok: news.content} %}
+
+
+{% set adbanner = {
+    "content": {
+        "title" : "Titre SEO Lorem ispum dolor sit amet consectetur",
+        "text" : "Sur le forfait Samsung Galaxy S20 Ultra 5G",
+        "link" : "test",
+        "link_title" : "En profiter",
+        "appearance" : 'cover'
+    }
+} %}
+{% include 'ad-banner.twig'  with {blok: adbanner.content} %}
+
+
+{# adbanner with alternative appearance #}
+{% set adbanner = {
+    "content": {
+        "title" : "Découvrez la TV d’Orange disponible en option",
+        "text" : "",
+        "link" : "test",
+        "link_title" : "En profiter",
+        "appearance" : "boxleft"
+    }
+} %}
+{% include 'ad-banner.twig'  with {blok: adbanner.content} %}
+
+
+{% set itemliststrate = {
+    "content":{
+        "title" : "Tous les avantages d'être client Orange",
+        "text" : "Vous en voulez plus ? Découvrez nos services pour optimiser votre Smartphone",
+        "items":[
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages test",
+                "text" : "Avec l'avantage mobile",
+                "link" : "test",
+                "image" : "https://via.placeholder.com/20x20",
+            },
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages",
+                "text" : "Avec l'avantage mobile",
+                "link" : "test",
+                "image" : "https://via.placeholder.com/20x20",
+            },
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages",
+                "text" : "Avec l'avantage mobile",
+                "link" : "test",
+                "image" : "https://via.placeholder.com/20x20",
+            },
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages",
+                "text" : "Avec l'avantage mobile",
+                "link" : "test",
+                "image" : "https://via.placeholder.com/20x20",
+            },
+            {
+                "title" : "Une rupture technologique engendre une révolution des usages",
+                "text" : "Avec l'avantage mobile",
+                "link" : "test",
+                "image" : "https://via.placeholder.com/20x20",
+            }
+        ]
+    }
+} %}
+{% include 'items-list-strate.twig' with {blok: itemliststrate.content} %}
+
+
+{% set tabsstrate = {
+"content" : {
+"_uid": "952f1fbc-9213-440c-8f52-dd520dadbad4",
+"items": [
+{
+"_uid": "c1e54c89-a04a-47fa-94ec-c9084603b608",
+"items": [
+{
+"_uid": "b62e661f-6d31-4cda-9fe2-5a12eac7c704",
+"title": "Deezer Premium (prix spécial clients Orange, sans engagement)",
+"component": "tab-item",
+"subtext": "Offre découverte: Le 1er mois offert",
+"price": "59€",
+"pricing": "Avec abonnement"
+},
+{
+"_uid": "56123295-a6e1-41a4-8a60-078631f5e405",
+"title": "Deezer Premium (prix spécial clients Orange, sans engagement)",
+"component": "tab-item",
+"subtext": "Offre découverte: Le 1er mois offert",
+"price": "59€",
+"pricing": "Avec abonnement",
+"image": {
+"fieldtype": "asset",
+"id": null,
+"filename": null,
+"title": null,
+"copyright": null,
+"focus": null,
+"alt": null,
+"name": ""
+}
+},
+{
+"_uid": "634ba90b-6efd-479f-a15a-4faec86b6ae7",
+"title": "Deezer Premium (prix spécial clients Orange, sans engagement)",
+"component": "tab-item",
+"subtext": "Offre découverte: Le 1er mois offert",
+"price": "59€",
+"pricing": "Avec abonnement",
+"image": {
+"fieldtype": "asset",
+"id": null,
+"filename": null,
+"title": null,
+"copyright": null,
+"focus": null,
+"alt": null,
+"name": "",
+"_uid": "9e0ed4f5-69e0-4c1a-bc8b-925b4edd0396"
+}
+},
+{
+"_uid": "933aaf11-836d-4735-8b46-e5c7a8664907",
+"title": "Deezer Premium (prix spécial clients Orange, sans engagement)",
+"component": "tab-item",
+"subtext": "Offre découverte: Le 1er mois offert",
+"price": "59€",
+"pricing": "Avec abonnement",
+"image": {
+"fieldtype": "asset",
+"id": null,
+"filename": null,
+"title": null,
+"copyright": null,
+"focus": null,
+"alt": null,
+"name": "",
+"_uid": "9dfe3b43-e5a5-4946-8895-abaadd950cce"
+}
+},
+{
+"_uid": "48e4df47-87a5-4e0d-bd51-e73300a2430c",
+"title": "Deezer Premium (prix spécial clients Orange, sans engagement)",
+"component": "tab-item",
+"subtext": "Offre découverte: Le 1er mois offert",
+"price": "59€",
+"pricing": "Avec abonnement",
+"image": {
+"fieldtype": "asset",
+"id": null,
+"filename": null,
+"title": null,
+"copyright": null,
+"focus": null,
+"alt": null,
+"name": "",
+"_uid": "21442505-64d9-452f-903c-9612308624bb"
+}
+}
+],
+"title": "Divertissement",
+"component": "tab-category"
+},
+{
+"component": "tab-category",
+"_uid": "8ef2998f-c1bb-42ac-9d97-54db63f9f127",
+"title": "Sécurité",
+"items": [
+{
+"component": "tab-item",
+"_uid": "a6654454-1ef2-4109-ada4-68520e3708bc",
+"title": "lorem ipsum",
+"subtext": "sub text",
+"price": "price",
+"pricing": "pricing",
+"image": {
+"fieldtype": "asset",
+"id": null,
+"filename": null,
+"title": null,
+"copyright": null,
+"focus": null,
+"alt": null,
+"name": ""
+}
+}
+]
+}
+],
+"title": "Rendez votre offre unique avec les options d’Orange",
+"component": "tabs-strate",
+"link": "link",
+"link_title": "Découvrir la TV d’Orange"
+}
+}%}
+{% include 'tabs-strate.twig'  with {blok: tabsstrate.content} %}
+
+
+{% set fullwidthtitle = {
+    "content":{
+        "title" : "Orange récompense votre fidélité",
+        "appearance" : "text_in"
+    }
+} %}
+{% include 'full-width-title.twig' with {blok: fullwidthtitle.content} %}
+
+
+{% set fullwidthtitle = {
+    "content":{
+        "title" : "Orange récompense votre fidélité",
+        "appearance" : "text_out"
+    }
+} %}
+{% include 'full-width-title.twig' with {blok: fullwidthtitle.content} %}
+
+
+{% set sliderimages = {
+    "content":{
+        "title" : "Orange récompense votre fidélité"
+    }
+} %}
+{% include 'sliderimages.twig' with {blok: sliderimages.content} %}
+
+
+{% set videoplayer = {
+    "content":{
+        "yt_id" : "KLiDcbN9YNY"
+    }
+} %}
+{% include 'video-player.twig' with {blok: videoplayer.content} %}
+
+
+{% set cta = {
+    "content":{
+        "link_title" : "CTA administrable",
+        "link" : "test",
+        "appearance" : "primary",
+        "alignment" : "center"
+    }
+} %}
+{# boosted markup (appearance = primary / secondary / info) #}
+{# utilities markup (alignment = left / center / right) #}
+{% include 'cta.twig' with {blok: cta.content} %}
+
+
+{% include 'steps-strate.twig' %}
+
+
+{% include 'range-select.twig' %}
+
+
+{% include 'faq-product.twig' %}
+
+
+{% include 'grid-items.twig' %}
+
+{% set tabbar = {
+    "content":{
+        "items":[
+            {
+                "title" : "Title",
+                "link" : "test",
+                "bgcolor" : "#000000"
+            },
+            {
+                "title" : "Title",
+                "link" : "test",
+                "bgcolor" : "#444444"
+            },
+            {
+                "title" : "Title",
+                "link" : "test",
+                "bgcolor" : "#DDDDDD"
+            }
+        ]
+    }
+} %}
+{% include 'tab-bar.twig' with {blok: tabbar.content} %}
+
+{% set emptyCarPush = {
+    "content":{
+        "items":[
+            {
+                "description" : "Ajouter un téléphone",
+                "url" : "test",
+                "icon" : "https://www.orange.lu/media/catalog/reinsurance/default/Fast_delivery_19371-cropped.svg"
+            },
+            {
+                "description" : "Title",
+                "url" : "test",
+                "icon" : "https://www.orange.lu/media/catalog/reinsurance/default/Fast_delivery_19371-cropped.svg"
+            },
+            {
+                "description" : "Title",
+                "url" : "test",
+                "icon" : "https://www.orange.lu/media/catalog/reinsurance/default/Fast_delivery_19371-cropped.svg"
+            },
+            {
+                "description" : "Title",
+                "url" : "test",
+                "icon" : "https://www.orange.lu/media/catalog/reinsurance/default/Fast_delivery_19371-cropped.svg"
+            }
+        ]
+    }
+} %}
+
+{% include 'empty_cart_push.twig' with {blok: emptyCarPush.content} %}
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/boosted@4.5.2/dist/js/boosted.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js"></script>
+<script src="/storyblok_staging/assets/dist/js/bundle.js"></script>
+</body>

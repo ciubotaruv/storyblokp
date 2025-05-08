@@ -1,0 +1,57 @@
+image: node:latest
+
+before_script:
+    - if [ -x "$(command -v apt-get)" ]; then apt-get update -qy; fi 
+    - if [ -x "$(command -v apt-get)" ]; then apt-get install -y ruby-dev; fi  
+    - if [ -x "$(command -v gem)" ]; then gem install dpl; fi 
+    - export CI_PROJECT_DIR=$CI_PROJECT_DIR
+    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.colorz.fr/colorz/pipelines-ci.git
+
+stages:
+    - staging
+    - production
+    - flush
+
+staging:
+    type: deploy
+    stage: staging
+    image: ruby:latest
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+    only:
+        - staging
+
+production:
+    type: deploy
+    stage: production
+    image: ruby:latest
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+    only:
+        - master
+
+sync-staging:
+    before_script: []
+    type: deploy
+    stage: staging
+    image: node:12.19.1-alpine3.10
+    script:
+        - echo $NETRC > ~/.netrc
+        - npm i storyblok -g
+        - storyblok pull-components --space 97892
+        - storyblok push-components components.97892.json --space 97909
+    only:
+        - staging
+
+sync-production:
+    before_script: []
+    type: deploy
+    stage: production
+    image: node:12.19.1-alpine3.10
+    script:
+        - echo $NETRC > ~/.netrc
+        - npm i storyblok -g
+        - storyblok pull-components --space 97909
+        - storyblok push-components components.97909.json --space 96280
+    only:
+        - master

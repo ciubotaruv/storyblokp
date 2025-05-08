@@ -1,0 +1,14 @@
+{{ blok._editable|raw }}
+<div class="c-tab-bar">
+    {% for item in blok.items %}
+    	{{ item._editable|raw }}
+        <div class="c-tab-bar__item u-relative">
+            <div class="c-tab-bar__img-container" style="background-color: {{ item.bgcolor }}; box-shadow: 0 0 0 1px {{ item.bgcolor }};">
+                <img data-src="{{ item.image|resize('50x50')}}" class="lazyload c-tab-bar__img">
+            </div>
+            {% if item.link and item.title %}
+                <a href="{{ item.link }}" class="c-tab-bar__label u-expand gtm-menu-element">{{ item.title }}</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

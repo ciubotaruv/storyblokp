@@ -1,0 +1,12 @@
+{{ blok._editable|raw }}
+<div class="c-info-bg u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container">
+        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 u-pad-md" style="background-color: {{ blok.info_bgcolor }}">
+            <p class="t-label t-label--big u-marg-b-xxs {{blok.label_bgcolor ? '' : 'u-pad-0'}}" style="background-color: {{ blok.label_bgcolor }}">{{ blok.label_title }}</p>
+            <div class="c-richtext c-richtext__info-bg" >{{ blok.text|richtext }}</div>
+            {% if blok.link and blok.link_title  %}
+                <a href="{{ blok.link }}" class="u-marg-t-xxs btn btn-sm btn-secondary gtm-section-cta-info-bg">{{ blok.link_title }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{{ blok._editable|raw }}
+<div class="c-option-tabs__slider-item c-news-card u-relative u-block js-slider-item gtm-section-orange_options">
+    {% if blok.image.filename %}
+        <div class="c-news-card__thumbnail u-box-5by3">
+            <div class="u-wrapper-panel">
+                <img data-src="{{ blok.image|resize('310x175') }}"
+                     class="u-fit u-full-wh lazyload"
+                     data-width="310"
+                     data-height="175"
+                     alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}">
+            </div>
+        </div>
+    {% endif  %}
+    <div class="c-news-card__info u-marg-t-xxs gtm-section-tabs-strats">
+        <span class="t-h2 u-white u-marg-b-xxs u-expand u-block">{{ blok.title }}</span>
+        <p class="t-text u-grey-600">{{ blok.subtext }}</p>
+        <div class="c-pricing u-marg-t-xxxs">
+            <p class="c-pricing__price u-inline-block">{{ blok.price }}</p>
+            <p class="c-pricing__muted-text u-inline-block u-grey-600 u-antialiased-off u-marg-l-xxxs">{{ blok.pricing }}</p>
+        </div>
+    </div>
+</div>

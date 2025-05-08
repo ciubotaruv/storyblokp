@@ -1,0 +1,35 @@
+{{ blok._editable|raw }}
+
+{# get the number of items to set clean column size #}
+{# and prevent from unwanted column break #}
+{% set total = blok.items|length %}
+{% set half = (total / 2)|round %}
+
+<div class="c-faq u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container">
+        <div class="row">
+            <div class="c-product-faq col-12 col-lg-10 offset-lg-1 u-flex u-flex-column--sm">
+                <div class="u-half-width u-full-width--md">
+                    {% for item in blok.items|slice(0, half) %}
+                        {{ item._editable|raw }}
+                        <li class="c-product-faq__item u-inline-block js-toggle-target"
+                            data-target=".c-product-faq__answer" data-class="is-open">
+                            <p class="t-list-arrow t-list-arrow--right u-bold u-antialiased js-toggle-btn">{{ item.title }}</p>
+                            <div class="c-product-faq__answer c-richtext">{{ item.text|richtext }}</div>
+                        </li>
+                    {% endfor %}
+                </div>
+                <div class="u-half-width u-full-width--md">
+                    {% for item in blok.items|slice(half, total) %}
+                        {{ item._editable|raw }}
+                        <li class="c-product-faq__item u-inline-block js-toggle-target"
+                            data-target=".c-product-faq__answer" data-class="is-open">
+                            <p class="t-list-arrow t-list-arrow--right u-bold u-antialiased js-toggle-btn">{{ item.title }}</p>
+                            <div class="c-product-faq__answer c-richtext">{{ item.text|richtext }}</div>
+                        </li>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

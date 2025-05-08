@@ -1,0 +1,39 @@
+{{ blok._editable|raw }}
+<div class="c-option-tabs u-marg-t-md u-marg-b-md u-marg-t-sm--xs u-marg-b-sm--xs u-antialiased">
+    <div class="container">
+        {% if blok.title %}
+            <span class="t-h1 u-white">{{ blok.title}}</span>
+        {% endif %}
+        <div class="js-tab">
+            <div class="c-option-tabs__tablist slider slider--xs js-slider" data-infinite="false">
+                {% set counter = 0 %}
+                {% for item in blok.items %}
+                    {{ item._editable|raw }}
+                    <button class="c-option-tabs__selector js-tab-selector js-slider-item {% if counter == 0 %} is-active {% endif %}" data-free-scroll="true" data-index="{{ counter }}"> {{ item.title }}</button>
+                    {% set counter = counter + 1 %}
+                {% endfor %}
+            </div>
+            <div class="c-option-tabs__wrapper js-tab-wrapper u-relative">
+                {% set counter = 0 %}
+                {% for item in blok.items %}
+                    {{ item._editable|raw }}
+                    <div class="c-option-tabs__item u-wrapper-panel js-tab-item  {% if counter == 0 %} is-active {% endif %}" data-index="{{ counter }}">
+                        <div class="js-tab-item-wrapper">
+                            <div class="c-option-tabs__slider slider slider--white-arrows js-slider" data-arrows="true" data-infinite="false">
+                                {% for tabitem in item.items %}
+                                    {% include tabitem.component ~ '.twig' with {blok: tabitem} %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% set counter = counter + 1 %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="u-marg-t-md u-center--sm">
+            {% if blok.link and blok.link_title %}
+                <a href="{{ blok.link }}" class="btn btn-inverse btn-secondary btn-lg gtm-section-cta-tabs-strats">{{ blok.link_title }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+{{ blok._editable|raw }}
+<div class="u-marg-t-md u-marg-b-md u-marg-t-sm--xs u-marg-b-sm--xs">
+    <div class="container">
+        <div class="c-full-banner {% if blok.appearance == 'boxleft' %}c-full-banner--hasbg{% endif %}">
+            <div class="u-z-back" style="
+                position: absolute;
+                left: 4vw;
+                top: 50%;
+                transform: translateY(-50%);">
+                <span style="color: {{ blok.title_color }}" class="t-h1 u-block u-white">{{ blok.title }}</span>
+                <div style="color: {{ blok.text_color }}" class="t-text u-white u-marg-t-xxs">{{ blok.text|richtext}}</div>
+                {% if blok.link and blok.link_title %}
+                    {% if blok.cta_color == 'light' %}
+                        <a href="{{ blok.link }}" class="btn btn-inverse btn-info u-marg-t-xxs u-expand gtm-section-ad-banner">{{ blok.link_title }}</a>
+                    {% else %}
+                        <a href="{{ blok.link }}" class="btn btn-info u-marg-t-xxs u-expand gtm-section-ad-banner">{{ blok.link_title }}</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="c-full-banner__image" style="width: 100%;">
+                <picture class="">
+                    <source media="(min-width: 767px)"
+                            data-srcset="{{ blok.image|resize('1800x300') }}, {{ blok.image|resize('3600x600') }} 2x">
+
+                    <img
+                            {% if blok.appearance == 'boxleft' %}
+                                data-srcset="{{ blok.image_mobile|resize('300x240') }}, {{ blok.image_mobile|resize('600x480') }} 2x"
+                            {% else %}
+                                data-srcset="{{ blok.image_mobile|resize('300x240') }}, {{ blok.image_mobile|resize('600x480') }} 2x"
+                            {% endif %}
+
+                            class="c-full-banner__image-mobile u-fit u-full-wh lazyload lazyload"
+                            alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}"
+                            style="border-radius: {{ blok.rounded ? '16px' : '0px' }};">
+                </picture>
+            </div>
+        </div>
+    </div>
+</div>

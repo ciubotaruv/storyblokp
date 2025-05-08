@@ -1,0 +1,30 @@
+{{ blok._editable|raw }}
+<div class="c-simple-pcard js-slider-item gtm-section-product-bestseller gtm-section-product-bestseller-pcard">
+    <div class="c-simple-pcard__content u-flex">
+        <div class="c-simple-pcard__thumbnail">
+            <div class="u-box-1by2">
+                    <picture class="u-wrapper-panel">
+                        <img data-srcset="{{ blok.image|resize('85x170') }}, {{ blok.image|resize('170x340') }} 2x"
+                             class="u-fit u-full-wh lazyload"
+                             alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.model }}{% endif %}">
+                    </picture>
+            </div>
+        </div>
+        <div class="c-simple-pcard__info">
+            <div class="u-marg-b-xxxs">
+                <img class="c-brand__logo" src="{{ blok.logo|resize('32x32')}}">
+                <span class="c-brand__name">{{ blok.brand }}</span>
+            </div>
+            {% if blok.link %}
+                <a href="{{ blok.link }}" class="u-expand t-h2 gtm-section-product-bestseller" title="{{ blok.brand }} {{ blok.model }}">{{ blok.model }}</a>
+            {% endif %}
+            {% if blok.link is empty %}
+                <span class="t-h2" title="{{ blok.brand }} {{ blok.model }}">{{ blok.model }}</span>
+            {% endif %}
+            <div class="c-pricing c-pricing--big">
+                <p class="c-pricing__price">{{ blok.pricing }}</p>
+                <p class="c-pricing__muted-text c-pricing__muted-text__off-one-px">{{ blok.pricing_muted }}</p>
+            </div>
+        </div>
+    </div>
+</div>

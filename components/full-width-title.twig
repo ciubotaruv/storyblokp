@@ -1,0 +1,46 @@
+{{ blok._editable|raw }}
+<div class="c-full-width-title u-pad-t-sm u-pad-b-sm u-pad-t-xs--xs u-pad-b-xs--xs">
+    <div class="container">
+        {% if blok.appearance == 'text_out' and blok.title %}
+            <h2 class="c-full-width-title__title t-h1 u-marg-b-sm">{{ blok.title }}</h2>
+        {% endif %}
+
+        <div class="c-full-width-title__image-container u-relative">
+                {% if blok.image_mobile is empty %}
+                    <img data-src="{{ blok.image|resize('1300x400') }}" class="u-full-width lazyload">
+                {% endif %}
+                {% if blok.image and blok.image_mobile %}
+                    <picture>
+                        <!-- mobile retina -->
+                        <source media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2)"
+                                data-srcset="{{ blok.image_mobile|resize('1280x720') }}">
+
+                        <!-- tablet -->
+                        <source media="(min-width: 767px)" 
+                                data-srcset="{{ blok.image|resize('1300x400') }}">
+
+                        <!-- tablet retina -->
+                        <source media="(min-width: 767px) and (-webkit-min-device-pixel-ratio: 2)"
+                                data-srcset="{{ blok.image|resize('2600x800') }}">
+
+                        <!-- desktop -->
+                        <source media="(min-width: 1080px)"
+                                data-srcset="{{ blok.image|resize('1300x400') }}">
+
+                        <!-- desktop retina -->
+                        <source media="(min-width: 1080px) and (-webkit-min-device-pixel-ratio: 2)"
+                                data-srcset="{{ blok.image|resize('2600x800') }}">
+
+                        <!-- mobile -->
+                        <img data-src="{{ blok.image_mobile|resize('640x360') }}" 
+                             class="u-full-width lazyload" 
+                             alt="{% if blok.image.alt %}{{ blok.image.alt }}{% else %}{{ blok.title }}{% endif %}">
+                    </picture>
+                {% endif %}
+                {% if blok.appearance == 'text_in' and blok.title %}
+                    <h2 style="color: {{ blok.title_color }}" class="c-full-width-title__title t-h1 u-white">{{ blok.title }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
