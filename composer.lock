@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f004d351082fc669111dfb7c02780676",
+    "content-hash": "8d276f4f34284df95ef2eff3f4ac1af4",
     "packages": [
         {
             "name": "apix/cache",
@@ -1152,7 +1152,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.2"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
 }
